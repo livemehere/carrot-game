@@ -1,3 +1,4 @@
+
 .section{
     margin: auto;
     background: url(img/background.png) center/cover ;
@@ -17,11 +18,26 @@
     
 }
 
+.gameBtn{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    background: rgb(255, 197, 91);
+    border: 5px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.gameBtn:hover{
+    transform: scale(1.1);
+}
+
 .header__timer{
     background: rgb(255, 255, 255);
     width: 200px;
     height: 50px;
-    margin-top: 70px;
     border: 5px solid black;
     border-radius: 10px;
     text-align: center;
@@ -55,10 +71,12 @@
     height: 140px;
     background: rgba(0, 0, 0, 0.479);
     margin-top: 170px;
-    display: flex;
+    /* 나타날떄는 display flex로 */
+    display: none;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    
 }
 
 .footer__popup__restart{
@@ -85,8 +103,7 @@
 
 .bug{
     position: absolute;
-    top: 10px;
-    left: 50px;
+    
 }
 
 .bug:hover{

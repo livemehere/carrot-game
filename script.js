@@ -9,6 +9,13 @@ const result = document.querySelector('.footer__popup__result');
 const startBtn = document.querySelector('.gameBtn');
 const timer = document.querySelector('.header__timer');
 
+const bgAudio = new Audio('sound/bg.mp3');
+const carrotAudio = new Audio('sound/carrot_pull.mp3');
+const bugAudio = new Audio('sound/bug_pull.mp3');
+const winAudio = new Audio('sound/game_win.mp3');
+const alertAudio = new Audio('sound/alert.wav');
+
+
 
 const footerWidth = footer.clientWidth;
 const footerHeight = footer.clientHeight;
@@ -41,12 +48,15 @@ footer.addEventListener('click',(e)=>{
         // result text
         result.innerHTML='YOU LOST';
         gameOver();
+        bugAudio.play();
     }else if(e.target.className === 'carrot'){
         deleteThis(e.target);
+        carrotAudio.play();
         if(remainCount == 0){
             // result text
             result.innerHTML='YOU WIN👍';
             gameOver();
+            winAudio.play();
         }
     }
 });
@@ -75,9 +85,13 @@ function updateCount(){
 function gameOver(){
     // 1.show popup
     popup.style.display = 'flex';
+    alertAudio.play();
     // 2.stop time
     clearInterval(countDown);
     // 3.stop carrot click event
+    bgAudio.pause();
+    bgAudio.currentTime=0.0;
+
 }
 
 function gameStart(){
@@ -89,6 +103,7 @@ function gameStart(){
     createCarrot(10);
     setTimer();
     countDown = setInterval(setTimer,1000);
+    bgAudio.play();
     
     // 2.Set time
     // 3.Reset remainCount
